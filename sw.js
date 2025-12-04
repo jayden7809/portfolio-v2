@@ -27,17 +27,17 @@ workbox.core.clientsClaim();
  */
 self.__precacheManifest = [
   {
-    "url": "webpack-runtime-a8db6c8b68d446be6b82.js"
+    "url": "webpack-runtime-cbe84ebbc03541561df1.js"
   },
   {
     "url": "framework-7286c4969fbcf2f61415.js"
   },
   {
-    "url": "app-84a0a0cea230e52e9f4b.js"
+    "url": "app-a64643e278d5afa633e8.js"
   },
   {
     "url": "offline-plugin-app-shell-fallback/index.html",
-    "revision": "4cf5ac42a00a47480cd97e8f69b7e036"
+    "revision": "889cad91f4e5bca3943d36227cc31510"
   },
   {
     "url": "component---cache-caches-gatsby-plugin-offline-app-shell-js-6f061b09cc63f0400406.js"
@@ -48,10 +48,10 @@ self.__precacheManifest = [
   },
   {
     "url": "page-data/app-data.json",
-    "revision": "1a4e3cb3a1c81997aaa3d89690c51ecd"
+    "revision": "94609b93fd2b489c07eb001a9b311abc"
   },
   {
-    "url": "546641dfde76ed00139ea2c3eae09499c5f2164a-ee588538642009e3174d.js"
+    "url": "546641dfde76ed00139ea2c3eae09499c5f2164a-8c212ad62be649a662c4.js"
   },
   {
     "url": "component---src-pages-index-js-a5b6a143b006da1e9371.js"
@@ -66,7 +66,7 @@ self.__precacheManifest = [
   },
   {
     "url": "page-data/sq/d/2031412112.json",
-    "revision": "08855f653fb83d9edaba8156213527cd"
+    "revision": "fd7d5e7356c612d2a035ac8381aea6d4"
   },
   {
     "url": "page-data/sq/d/3825832676.json",
@@ -74,7 +74,7 @@ self.__precacheManifest = [
   },
   {
     "url": "page-data/sq/d/70739316.json",
-    "revision": "7bd1be5a5bd2bbd9ce67d82825dd7a9a"
+    "revision": "2c3e75a9d2115eb532e616fb3c7cd2a2"
   },
   {
     "url": "component---src-pages-archive-js-7fe5ff815a34e84070e0.js"
@@ -85,7 +85,7 @@ self.__precacheManifest = [
   },
   {
     "url": "manifest.webmanifest",
-    "revision": "2514a19ef5207c3a41bca50af601f426"
+    "revision": "0eccb40a552c84b0d71a45e2cabb274c"
   }
 ].concat(self.__precacheManifest || []);
 workbox.precaching.precacheAndRoute(self.__precacheManifest, {});
@@ -172,12 +172,12 @@ const navigationRoute = new NavigationRoute(async ({ event }) => {
   lastNavigationRequest = event.request.url
 
   let { pathname } = new URL(event.request.url)
-  pathname = pathname.replace(new RegExp(`^/portfolio`), ``)
+  pathname = pathname.replace(new RegExp(`^/portfolio-v2`), ``)
 
   // Check for resources + the app bundle
   // The latter may not exist if the SW is updating to a new version
   const resources = await idbKeyval.get(`resources:${pathname}`)
-  if (!resources || !(await caches.match(`/portfolio/app-84a0a0cea230e52e9f4b.js`))) {
+  if (!resources || !(await caches.match(`/portfolio-v2/app-a64643e278d5afa633e8.js`))) {
     return await fetch(event.request)
   }
 
@@ -190,7 +190,7 @@ const navigationRoute = new NavigationRoute(async ({ event }) => {
     }
   }
 
-  const offlineShell = `/portfolio/offline-plugin-app-shell-fallback/index.html`
+  const offlineShell = `/portfolio-v2/offline-plugin-app-shell-fallback/index.html`
   const offlineShellWithKey = workbox.precaching.getCacheKeyForURL(offlineShell)
   return await caches.match(offlineShellWithKey)
 })

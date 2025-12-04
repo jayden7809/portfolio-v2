@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+Sitemap: https://baeksebin.github.io/portfolio/sitemap-index.xml
+Host: https://baeksebin.github.io
